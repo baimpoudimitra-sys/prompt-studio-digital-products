@@ -3,18 +3,18 @@
 }
 
 :root {
-  --bg: #f5f7fb;
-  --bg-accent: #eef3ff;
-  --card: rgba(255, 255, 255, 0.82);
+  --bg: #fff6fb;
+  --bg-accent: #fdebf4;
+  --card: rgba(255, 255, 255, 0.88);
   --card-strong: #ffffff;
-  --text: #162033;
-  --muted: #667085;
-  --line: rgba(15, 23, 42, 0.09);
-  --primary: #335cff;
-  --primary-dark: #2447d6;
-  --primary-soft: rgba(51, 92, 255, 0.10);
-  --shadow-lg: 0 20px 45px rgba(17, 24, 39, 0.10);
-  --shadow-md: 0 10px 25px rgba(17, 24, 39, 0.08);
+  --text: #33222d;
+  --muted: #7b6571;
+  --line: rgba(82, 44, 66, 0.10);
+  --primary: #d85b93;
+  --primary-dark: #b63f76;
+  --primary-soft: rgba(216, 91, 147, 0.12);
+  --shadow-lg: 0 20px 45px rgba(94, 47, 72, 0.10);
+  --shadow-md: 0 10px 25px rgba(94, 47, 72, 0.08);
   --radius-xl: 24px;
   --radius-lg: 18px;
   --radius-md: 14px;
@@ -30,8 +30,8 @@ body {
   font-family: Inter, Arial, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, #dfe8ff 0%, transparent 35%),
-    radial-gradient(circle at top right, #e8f0ff 0%, transparent 30%),
+    radial-gradient(circle at top left, #ffd8ea 0%, transparent 34%),
+    radial-gradient(circle at top right, #f8d7e8 0%, transparent 30%),
     linear-gradient(180deg, var(--bg-accent) 0%, var(--bg) 100%);
   min-height: 100vh;
 }
@@ -54,9 +54,9 @@ body {
   margin: 0 0 14px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(51, 92, 255, 0.12);
-  color: var(--primary);
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(216, 91, 147, 0.14);
+  color: var(--primary-dark);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -69,6 +69,7 @@ body {
   font-size: clamp(2rem, 4vw, 3.6rem);
   line-height: 1.08;
   letter-spacing: -0.04em;
+  color: var(--text);
 }
 
 .subtitle {
@@ -90,7 +91,7 @@ body {
   background: var(--card);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: var(--radius-xl);
   padding: 26px;
   box-shadow: var(--shadow-lg);
@@ -100,12 +101,61 @@ body {
   margin: 0 0 10px;
   font-size: 1.4rem;
   letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 .section-text {
   margin: 0 0 22px;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.presets-card {
+  padding-bottom: 22px;
+}
+
+.preset-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.preset-btn {
+  border: 1px solid rgba(82, 44, 66, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  box-shadow: 0 6px 18px rgba(94, 47, 72, 0.05);
+}
+
+.preset-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(216, 91, 147, 0.24);
+  background: rgba(255, 255, 255, 1);
+}
+
+.preset-btn:active {
+  transform: translateY(0);
+}
+
+.preset-btn.active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 12px 24px rgba(216, 91, 147, 0.22);
+}
+
+.preset-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgba(216, 91, 147, 0.12),
+    0 10px 22px rgba(216, 91, 147, 0.16);
 }
 
 .form-grid {
@@ -132,7 +182,7 @@ textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.94);
   color: var(--text);
   font-size: 15px;
   line-height: 1.5;
@@ -143,13 +193,147 @@ textarea {
 
 .field input::placeholder,
 textarea::placeholder {
-  color: #98a2b3;
+  color: #af97a3;
 }
 
 .field input:focus,
 .field select:focus,
 textarea:focus {
   outline: none;
-  border-color: rgba(51, 92, 255, 0.45);
+  border-color: rgba(216, 91, 147, 0.45);
   box-shadow: 0 0 0 4px var(--primary-soft);
-  backgr
+  background: #ffffff;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.btn {
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  min-height: 48px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(216, 91, 147, 0.22);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text);
+  border: 1px solid rgba(82, 44, 66, 0.08);
+}
+
+.output-card {
+  overflow: hidden;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+textarea {
+  min-height: 320px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.tips-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.tips-card li {
+  margin-bottom: 10px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.tips-card li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 28px 14px 42px;
+  }
+
+  .hero {
+    margin-bottom: 22px;
+  }
+
+  .hero h1 {
+    line-height: 1.12;
+  }
+
+  .subtitle {
+    font-size: 0.98rem;
+  }
+
+  .preset-group {
+    gap: 10px;
+  }
+
+  .preset-btn {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .output-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  textarea {
+    min-height: 260px;
+  }
+}
