@@ -18,11 +18,11 @@ const presetButtons = document.querySelectorAll(".preset-btn");
 function getFormData() {
   return {
     platform: platformInput.value || "ChatGPT",
-    productType: productTypeInput.value.trim() || "digital product",
-    audience: audienceInput.value.trim() || "online creators",
-    topic: topicInput.value.trim() || "productivity",
+    productType: productTypeInput.value.trim() || "Visual Prompt Pack",
+    audience: audienceInput.value.trim() || "digital product creators",
+    topic: topicInput.value.trim() || "visual AI design assets",
     goal: goalInput.value || "idea",
-    tone: toneInput.value.trim() || "clear and premium",
+    tone: toneInput.value.trim() || "clear, premium, commercial",
     offerType: offerTypeInput.value || "core"
   };
 }
@@ -58,29 +58,29 @@ function applyPreset(button) {
 }
 
 function buildPrompt(data) {
-  const intro = `You are an expert digital product strategist writing for ${data.platform}.`;
-  const context = `I am creating a ${data.offerType} ${data.productType} for ${data.audience} in the ${data.topic} niche.`;
-  const style = `Use a ${data.tone} tone. Keep the answer practical, specific, and structured.`;
-  const packContext = `The output should be useful for building prompt packs, digital offers, templates, and sellable assets.`;
+  const intro = `You are an expert AI product strategist and prompt pack creator writing for ${data.platform}.`;
+  const context = `I want to create a ${data.offerType} ${data.productType} for ${data.audience} in the niche of ${data.topic}.`;
+  const style = `Use a ${data.tone} tone. Keep the response highly structured, commercially useful, specific, and beginner-friendly.`;
+  const productIntent = `The goal is to create a digital product or prompt pack that can be sold online, especially on marketplaces like Etsy or similar platforms.`;
+  const visualFocus = `Focus on visual digital products, themed AI image generation assets, commercial use cases, and bundle opportunities where relevant.`;
 
   if (data.goal === "idea") {
     return `${intro}
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
-Help me generate 10 strong digital product ideas.
+Generate 12 strong product ideas for this prompt pack.
 
-Requirements:
-- Focus on products that are easy to create and easy to sell
-- Prioritize clear buyer pain points
-- Include:
+For each idea include:
 1. Product name
-2. Buyer problem
-3. Core promise
-4. Suggested format
-5. Suggested price range
+2. What it helps create
+3. Who it is for
+4. Why it would sell
+5. Suggested format
+6. Suggested starter price
 
 ${style}`;
   }
@@ -90,17 +90,18 @@ ${style}`;
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
-Validate this product direction.
+Validate this product idea.
 
 Requirements:
-- Explain whether this idea has real selling potential
-- Identify the buyer pain point
-- Explain what makes the product attractive or weak
+- Evaluate market potential
+- Identify buyer pain points and use cases
+- Explain whether the idea feels too broad, too narrow, or well-positioned
 - Suggest 3 stronger positioning angles
-- Suggest 3 ways to improve demand
-- End with a final verdict: weak, medium, or strong potential
+- Suggest 3 ways to improve commercial appeal
+- Give a final verdict: weak, medium, or strong
 
 ${style}`;
   }
@@ -110,18 +111,21 @@ ${style}`;
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
-Create a full product blueprint.
+Create a full product blueprint for this prompt pack.
 
 Requirements:
-- Suggest a product title
-- Suggest all sections, pages, or modules
+- Suggest a strong final product title
+- Define the promise of the product
+- Suggest 8 to 12 sections or modules
 - Explain what each section should contain
-- Suggest bonus elements to make it feel premium
-- Suggest the best format for delivery
-- Suggest a simple workflow to build it fast
-- Make it suitable for a sellable prompt pack or digital product
+- Suggest prompt categories inside the pack
+- Suggest beginner-friendly instructions to include
+- Suggest bonuses that increase perceived value
+- Suggest the best delivery format
+- Suggest how to make the pack feel premium
 
 ${style}`;
   }
@@ -131,17 +135,19 @@ ${style}`;
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
-Write sales and listing copy.
+Write Etsy-style sales copy for this product.
 
 Requirements:
-- Write 10 title ideas
-- Write a strong product description
-- Write key benefits in bullet points
-- Suggest relevant keywords
-- Write a short promise statement
-- Write a simple call to action
+- Write 12 listing title ideas
+- Write a compelling product description
+- Write benefit-focused bullet points
+- Suggest strong keyword ideas
+- Write a short hook for the first product image
+- Write a concise call to action
+- Highlight who this product is best for
 
 ${style}`;
   }
@@ -151,17 +157,19 @@ ${style}`;
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
-Create a 7-day launch plan.
+Create a simple 7-day launch plan.
 
 Requirements:
-- Include day-by-day actions
-- Include Instagram or TikTok content ideas
-- Include 5 promo angles
-- Include urgency ideas
-- Suggest one upsell or bonus
-- Keep the plan easy to execute
+- Break down the plan day by day
+- Include content ideas for Instagram, Pinterest, or TikTok
+- Suggest 5 launch angles
+- Suggest urgency or bonus ideas
+- Include one audience-building idea
+- Include one upsell suggestion
+- Keep the plan realistic for a solo creator
 
 ${style}`;
   }
@@ -171,16 +179,18 @@ ${style}`;
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
-Help me create a pricing strategy.
+Build a pricing strategy for this product.
 
 Requirements:
-- Suggest 3 price points for this offer
-- Explain what should be included at each price
-- Suggest a starter version, core version, and premium version
-- Explain which price is best for first launch
-- Include positioning advice for perceived value
+- Suggest a starter, core, and premium version
+- Explain what should be included in each tier
+- Suggest realistic price ranges
+- Explain which version should be launched first
+- Include perceived-value advice
+- Suggest one bundle pricing option
 
 ${style}`;
   }
@@ -190,16 +200,19 @@ ${style}`;
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
 Create bundle ideas for this product.
 
 Requirements:
-- Suggest 5 bundle ideas
-- Explain what to include in each bundle
-- Suggest who each bundle is for
-- Suggest bundle pricing logic
-- Suggest one upsell and one cross-sell idea
+- Suggest 7 bundle concepts
+- Explain what each bundle should include
+- Suggest which audience each bundle suits best
+- Suggest bundle naming ideas
+- Suggest a discount logic for bundles
+- Include one cross-sell and one upsell idea
+- Mention which bundles feel best for Etsy
 
 ${style}`;
   }
@@ -209,17 +222,19 @@ ${style}`;
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
-Write a short email sequence for this product.
+Write a 5-email sequence to promote this product.
 
 Requirements:
-- Create 5 email ideas
 - Include subject line for each email
-- Include purpose of each email
-- Include one soft-sell email
+- Explain the goal of each email
+- Include one nurture email
+- Include one education email
+- Include one product pitch email
+- Include one objection-handling email
 - Include one urgency email
-- Keep it useful for digital product promotion
 
 ${style}`;
   }
@@ -229,21 +244,31 @@ ${style}`;
 
 ${context}
 
-${packContext}
+${productIntent}
+${visualFocus}
 
-Create customer FAQ and objection-handling copy.
+Create customer FAQ and objection-handling content.
 
 Requirements:
-- List 10 common buyer questions or objections
-- Write clear answers
-- Handle concerns about value, price, and usefulness
-- Keep the answers persuasive but honest
-- Make it suitable for a product page or checkout page
+- Write 12 common questions buyers may ask
+- Write clear and helpful answers
+- Address doubts about value, originality, ease of use, and results
+- Make the answers persuasive but honest
+- Keep the copy suitable for Etsy listings or product pages
 
 ${style}`;
   }
 
-  return "No prompt template found.";
+  return `${intro}
+
+${context}
+
+${productIntent}
+${visualFocus}
+
+Create a useful structured response for this product.
+
+${style}`;
 }
 
 function downloadTextFile(text, filename) {
@@ -257,6 +282,15 @@ function downloadTextFile(text, filename) {
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
+}
+
+function createFilename(data) {
+  const rawName = `${data.productType}-${data.goal}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return rawName ? `${rawName}.txt` : "prompt-output.txt";
 }
 
 function clearFormFields() {
@@ -308,7 +342,8 @@ downloadBtn.addEventListener("click", function () {
     return;
   }
 
-  downloadTextFile(text, "prompt-studio-output.txt");
+  const data = getFormData();
+  downloadTextFile(text, createFilename(data));
   setStatus("Downloaded");
 });
 
