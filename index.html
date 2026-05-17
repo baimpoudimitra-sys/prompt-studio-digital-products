@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Studio for Digital Product Creators</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <p class="eyebrow">Free AI Prompt Builder</p>
+      <h1>Prompt Studio for Digital Product Creators</h1>
+      <p class="subtitle">
+        Generate ready-to-use prompts for product ideas, validation, listing copy,
+        launch planning, and bundles.
+      </p>
+    </header>
 
+    <main class="container">
+      <section class="card form-card">
+        <h2>Create your prompt</h2>
+        <p class="section-text">
+          Fill in the fields below and the app will generate a structured prompt you can copy and use in ChatGPT.
+        </p>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="productType">Product type</label>
+            <input id="productType" type="text" placeholder="e.g. Notion template" />
+          </div>
+
+          <div class="field">
+            <label for="audience">Target audience</label>
+            <input id="audience" type="text" placeholder="e.g. women entrepreneurs" />
+          </div>
+
+          <div class="field">
+            <label for="topic">Topic / niche</label>
+            <input id="topic" type="text" placeholder="e.g. productivity" />
+          </div>
+
+          <div class="field">
+            <label for="goal">Goal</label>
+            <select id="goal">
+              <option value="idea">Product Idea</option>
+              <option value="validation">Product Validation</option>
+              <option value="blueprint">Product Blueprint</option>
+              <option value="listing">Sales / Listing Copy</option>
+              <option value="launch">Launch Plan</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="tone">Tone</label>
+            <input id="tone" type="text" placeholder="e.g. premium, simple, clear" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn" class="btn btn-primary">Generate Prompt</button>
+          <button id="copyBtn" class="btn btn-secondary">Copy Prompt</button>
+        </div>
+      </section>
+
+      <section class="card output-card">
+        <div class="output-header">
+          <h2>Your prompt</h2>
+          <span id="statusMessage" class="status">Ready</span>
+        </div>
+
+        <textarea id="output" readonly placeholder="Your generated prompt will appear here..."></textarea>
+      </section>
+
+      <section class="card tips-card">
+        <h2>How to use it</h2>
+        <ul>
+          <li>Choose the goal based on what you want to create.</li>
+          <li>Use clear words in product type, audience, and topic.</li>
+          <li>Copy the final prompt and paste it into ChatGPT.</li>
+          <li>Edit the output and turn the best results into paid prompt packs.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
