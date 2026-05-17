@@ -9,11 +9,11 @@
 <body>
   <div class="app">
     <header class="hero">
-      <p class="eyebrow">Free AI Prompt Builder</p>
+      <p class="eyebrow">Upgraded Prompt Builder</p>
       <h1>Prompt Studio for Digital Product Creators</h1>
       <p class="subtitle">
-        Generate ready-to-use prompts for product ideas, validation, listing copy,
-        launch planning, and bundles.
+        Build stronger prompts for ideas, validation, pricing, listings, launch,
+        bundles, emails, and customer questions.
       </p>
     </header>
 
@@ -21,10 +21,19 @@
       <section class="card form-card">
         <h2>Create your prompt</h2>
         <p class="section-text">
-          Fill in the fields below and the app will generate a structured prompt you can copy and use in ChatGPT.
+          Fill in the fields below and generate a structured prompt you can use in ChatGPT, Claude, or Gemini.
         </p>
 
         <div class="form-grid">
+          <div class="field">
+            <label for="platform">AI platform</label>
+            <select id="platform">
+              <option value="ChatGPT">ChatGPT</option>
+              <option value="Claude">Claude</option>
+              <option value="Gemini">Gemini</option>
+            </select>
+          </div>
+
           <div class="field">
             <label for="productType">Product type</label>
             <input id="productType" type="text" placeholder="e.g. Notion template" />
@@ -48,6 +57,10 @@
               <option value="blueprint">Product Blueprint</option>
               <option value="listing">Sales / Listing Copy</option>
               <option value="launch">Launch Plan</option>
+              <option value="pricing">Pricing Strategy</option>
+              <option value="bundle">Bundle Ideas</option>
+              <option value="email">Email Sequence</option>
+              <option value="faq">Customer FAQ / Objections</option>
             </select>
           </div>
 
@@ -55,11 +68,23 @@
             <label for="tone">Tone</label>
             <input id="tone" type="text" placeholder="e.g. premium, simple, clear" />
           </div>
+
+          <div class="field">
+            <label for="offerType">Offer level</label>
+            <select id="offerType">
+              <option value="starter">Starter</option>
+              <option value="core">Core Offer</option>
+              <option value="premium">Premium Offer</option>
+              <option value="bundle">Bundle</option>
+            </select>
+          </div>
         </div>
 
         <div class="actions">
           <button id="generateBtn" class="btn btn-primary">Generate Prompt</button>
           <button id="copyBtn" class="btn btn-secondary">Copy Prompt</button>
+          <button id="downloadBtn" class="btn btn-secondary">Download TXT</button>
+          <button id="clearBtn" class="btn btn-secondary">Clear Form</button>
         </div>
       </section>
 
@@ -69,16 +94,16 @@
           <span id="statusMessage" class="status">Ready</span>
         </div>
 
-        <textarea id="output" readonly placeholder="Your generated prompt will appear here..."></textarea>
+        <textarea id="output" readonly placeholder="Your upgraded prompt will appear here..."></textarea>
       </section>
 
       <section class="card tips-card">
-        <h2>How to use it</h2>
+        <h2>Best use</h2>
         <ul>
-          <li>Choose the goal based on what you want to create.</li>
-          <li>Use clear words in product type, audience, and topic.</li>
-          <li>Copy the final prompt and paste it into ChatGPT.</li>
-          <li>Edit the output and turn the best results into paid prompt packs.</li>
+          <li>Use this tool to build prompts for your own digital products.</li>
+          <li>Choose a clear goal before generating.</li>
+          <li>Save your best prompts as text files and organize them by section.</li>
+          <li>Turn the strongest results into PDF prompt packs, listings, and launch content.</li>
         </ul>
       </section>
     </main>
