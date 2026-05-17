@@ -4,156 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prompt Studio for Digital Product Creators</title>
-  <link rel="stylesheet" href="./style.css?v=6" />
+  <link rel="stylesheet" href="./style.css?v=7" />
 </head>
 <body>
   <div class="app">
     <header class="hero">
-      <p class="eyebrow">Upgraded Prompt Builder</p>
+      <p class="eyebrow">Visual Prompt Pack Builder</p>
       <h1>Prompt Studio for Digital Product Creators</h1>
       <p class="subtitle">
-        Build stronger prompts for ideas, validation, pricing, listings, launch,
-        bundles, emails, and customer questions.
+        Build prompt packs for visual digital products, Etsy-ready ideas, launch assets,
+        bundle concepts, listings, and themed AI design collections.
       </p>
     </header>
 
     <main class="container">
       <section class="card presets-card">
-        <h2>Quick presets</h2>
+        <h2>Visual builder presets</h2>
         <p class="section-text">
-          Choose a digital product type to auto-fill the form and build prompt packs faster.
+          Choose a category to auto-fill the form and create themed prompt packs faster.
         </p>
 
         <div class="preset-group">
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Prompt Pack"
-            data-audience="digital product creators"
-            data-topic="AI prompts"
-            data-tone="clear, practical, premium"
-            data-offer="core"
-            data-goal="blueprint"
-          >
-            Prompt Pack
-          </button>
+          <button type="button" class="preset-btn" data-product="Background Prompt Pack" data-audience="digital product creators" data-topic="background designs for AI art" data-tone="clear, premium, creative" data-offer="core" data-goal="blueprint">Backgrounds</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Ebook"
-            data-audience="beginner online creators"
-            data-topic="self-development"
-            data-tone="simple, valuable, clear"
-            data-offer="core"
-            data-goal="blueprint"
-          >
-            Ebook
-          </button>
+          <button type="button" class="preset-btn" data-product="Character Design Prompt Pack" data-audience="AI artists and creators" data-topic="character design prompts" data-tone="creative, vivid, structured" data-offer="premium" data-goal="blueprint">Character Design</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Workbook"
-            data-audience="women entrepreneurs"
-            data-topic="mindset and productivity"
-            data-tone="supportive, clear, practical"
-            data-offer="core"
-            data-goal="blueprint"
-          >
-            Workbook
-          </button>
+          <button type="button" class="preset-btn" data-product="Clipart Prompt Pack" data-audience="Etsy sellers and digital creators" data-topic="clipart and illustration assets" data-tone="practical, creative, commercial" data-offer="core" data-goal="blueprint">Clipart</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Planner"
-            data-audience="busy women"
-            data-topic="daily organization"
-            data-tone="organized, practical, motivating"
-            data-offer="starter"
-            data-goal="idea"
-          >
-            Planner
-          </button>
+          <button type="button" class="preset-btn" data-product="Coloring Page Prompt Pack" data-audience="printable creators" data-topic="coloring pages for kids and adults" data-tone="clear, commercial, useful" data-offer="core" data-goal="idea">Coloring Pages</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Journal"
-            data-audience="self-growth audience"
-            data-topic="healing and reflection"
-            data-tone="warm, reflective, supportive"
-            data-offer="starter"
-            data-goal="idea"
-          >
-            Journal
-          </button>
+          <button type="button" class="preset-btn" data-product="Cross Stitch Prompt Pack" data-audience="craft product creators" data-topic="cross stitch pattern ideas" data-tone="detailed, practical, niche" data-offer="starter" data-goal="idea">Cross Stitch</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Notion Template"
-            data-audience="productivity-focused creators"
-            data-topic="organization systems"
-            data-tone="smart, useful, premium"
-            data-offer="premium"
-            data-goal="blueprint"
-          >
-            Notion Template
-          </button>
+          <button type="button" class="preset-btn" data-product="Digital Paper Prompt Pack" data-audience="junk journal and printable creators" data-topic="digital paper and printable textures" data-tone="creative, commercial, aesthetic" data-offer="core" data-goal="blueprint">Digital Paper</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Canva Template Pack"
-            data-audience="small business owners"
-            data-topic="social media content"
-            data-tone="modern, clear, actionable"
-            data-offer="core"
-            data-goal="idea"
-          >
-            Canva Template Pack
-          </button>
+          <button type="button" class="preset-btn" data-product="Fantasy Art Prompt Pack" data-audience="AI art creators" data-topic="fantasy illustrations and magical scenes" data-tone="imaginative, premium, vivid" data-offer="premium" data-goal="idea">Fantasy Art</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Mini Course"
-            data-audience="beginners"
-            data-topic="online business"
-            data-tone="educational, clear, structured"
-            data-offer="premium"
-            data-goal="blueprint"
-          >
-            Mini Course
-          </button>
+          <button type="button" class="preset-btn" data-product="Gothic Art Prompt Pack" data-audience="alternative aesthetic creators" data-topic="gothic art and dark mood visuals" data-tone="dramatic, aesthetic, commercial" data-offer="core" data-goal="idea">Gothic Art</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Printable Bundle"
-            data-audience="home organization audience"
-            data-topic="planning and routines"
-            data-tone="practical, easy, useful"
-            data-offer="bundle"
-            data-goal="bundle"
-          >
-            Printable Bundle
-          </button>
+          <button type="button" class="preset-btn" data-product="Holiday Prompt Pack" data-audience="seasonal digital product sellers" data-topic="holiday-themed AI designs" data-tone="festive, practical, sales-focused" data-offer="bundle" data-goal="bundle">Holiday Designs</button>
 
-          <button
-            type="button"
-            class="preset-btn"
-            data-product="Etsy Listing Pack"
-            data-audience="Etsy sellers"
-            data-topic="product listings and SEO"
-            data-tone="strategic, practical, conversion-focused"
-            data-offer="core"
-            data-goal="listing"
-          >
-            Etsy Listing Pack
-          </button>
+          <button type="button" class="preset-btn" data-product="Icon and Logo Prompt Pack" data-audience="brand creators and small businesses" data-topic="icon and logo concept prompts" data-tone="clean, smart, strategic" data-offer="premium" data-goal="blueprint">Icon & Logo</button>
+
+          <button type="button" class="preset-btn" data-product="Junk Journal Prompt Pack" data-audience="junk journal creators" data-topic="vintage journal pages and ephemera" data-tone="creative, detailed, nostalgic" data-offer="core" data-goal="blueprint">Junk Journal</button>
+
+          <button type="button" class="preset-btn" data-product="Mockup Prompt Pack" data-audience="Etsy and POD sellers" data-topic="mockup scenes and styled product photos" data-tone="commercial, useful, polished" data-offer="premium" data-goal="listing">Mockups</button>
+
+          <button type="button" class="preset-btn" data-product="Pattern Prompt Pack" data-audience="surface pattern creators" data-topic="repeating patterns and seamless designs" data-tone="creative, organized, practical" data-offer="core" data-goal="blueprint">Patterns</button>
+
+          <button type="button" class="preset-btn" data-product="Photo Scene Prompt Pack" data-audience="mockup and stock-style creators" data-topic="styled photo scenes and realistic compositions" data-tone="realistic, polished, commercial" data-offer="core" data-goal="idea">Photo / Styled Scenes</button>
+
+          <button type="button" class="preset-btn" data-product="T-Shirt Design Prompt Pack" data-audience="print on demand sellers" data-topic="t-shirt graphics and POD concepts" data-tone="bold, commercial, trend-aware" data-offer="core" data-goal="listing">T-Shirt Design</button>
+
+          <button type="button" class="preset-btn" data-product="Wall Art Prompt Pack" data-audience="wall art sellers and printable creators" data-topic="wall art concepts and printable decor" data-tone="premium, aesthetic, sellable" data-offer="premium" data-goal="bundle">Wall Art</button>
         </div>
       </section>
 
@@ -175,17 +77,17 @@
 
           <div class="field">
             <label for="productType">Product type</label>
-            <input id="productType" type="text" placeholder="e.g. Notion template" />
+            <input id="productType" type="text" placeholder="e.g. Clipart Prompt Pack" />
           </div>
 
           <div class="field">
             <label for="audience">Target audience</label>
-            <input id="audience" type="text" placeholder="e.g. women entrepreneurs" />
+            <input id="audience" type="text" placeholder="e.g. Etsy sellers" />
           </div>
 
           <div class="field">
             <label for="topic">Topic / niche</label>
-            <input id="topic" type="text" placeholder="e.g. productivity" />
+            <input id="topic" type="text" placeholder="e.g. printable wall art" />
           </div>
 
           <div class="field">
@@ -205,7 +107,7 @@
 
           <div class="field">
             <label for="tone">Tone</label>
-            <input id="tone" type="text" placeholder="e.g. premium, simple, clear" />
+            <input id="tone" type="text" placeholder="e.g. premium, commercial, aesthetic" />
           </div>
 
           <div class="field">
@@ -233,22 +135,22 @@
           <span id="statusMessage" class="status">Ready</span>
         </div>
 
-        <textarea id="output" readonly placeholder="Your upgraded prompt will appear here..."></textarea>
+        <textarea id="output" readonly placeholder="Your visual prompt-builder output will appear here..."></textarea>
       </section>
 
       <section class="card tips-card">
         <h2>Best use</h2>
         <ul>
-          <li>Use this tool to build prompts for digital products and prompt packs.</li>
-          <li>Choose a preset first if you want a faster workflow.</li>
-          <li>Pick a clear goal before generating the prompt.</li>
-          <li>Save your best prompts as text files and organize them by product type or section.</li>
-          <li>Turn the strongest results into PDF prompt packs, listings, and launch content.</li>
+          <li>Use presets to create themed prompt packs faster.</li>
+          <li>Choose blueprint when you want a full pack structure.</li>
+          <li>Choose listing when you want Etsy-ready copy direction.</li>
+          <li>Choose bundle when you want collection ideas and product stacking.</li>
+          <li>Turn the strongest results into PDFs, bundles, or category-based prompt products.</li>
         </ul>
       </section>
     </main>
   </div>
 
-  <script src="./script.js?v=3"></script>
+  <script src="./script.js?v=7"></script>
 </body>
 </html>
