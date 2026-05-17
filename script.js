@@ -217,6 +217,7 @@ function clearFormFields() {
   goalInput.value = "idea";
   offerTypeInput.value = "starter";
   output.value = "";
+  autoResizeTextarea();
   statusMessage.textContent = "Cleared";
 }
 
@@ -224,6 +225,7 @@ generateBtn.addEventListener("click", function () {
   const data = getFormData();
   const finalPrompt = buildPrompt(data);
   output.value = finalPrompt;
+  autoResizeTextarea();
   statusMessage.textContent = "Prompt generated";
 });
 
@@ -259,3 +261,5 @@ downloadBtn.addEventListener("click", function () {
 clearBtn.addEventListener("click", function () {
   clearFormFields();
 });
+output.addEventListener("input", autoResizeTextarea);
+autoResizeTextarea();
