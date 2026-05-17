@@ -13,6 +13,7 @@ const clearBtn = document.getElementById("clearBtn");
 
 const output = document.getElementById("output");
 const statusMessage = document.getElementById("statusMessage");
+const presetButtons = document.querySelectorAll(".preset-btn");
 
 function getFormData() {
   return {
@@ -31,15 +32,43 @@ function autoResizeTextarea() {
   output.style.height = output.scrollHeight + "px";
 }
 
+function setStatus(message) {
+  statusMessage.textContent = message;
+}
+
+function applyPreset(button) {
+  const product = button.dataset.product || "";
+  const audience = button.dataset.audience || "";
+  const topic = button.dataset.topic || "";
+  const tone = button.dataset.tone || "";
+  const offer = button.dataset.offer || "core";
+  const goal = button.dataset.goal || "idea";
+
+  productTypeInput.value = product;
+  audienceInput.value = audience;
+  topicInput.value = topic;
+  toneInput.value = tone;
+  offerTypeInput.value = offer;
+  goalInput.value = goal;
+
+  presetButtons.forEach((btn) => btn.classList.remove("active"));
+  button.classList.add("active");
+
+  setStatus(`Preset loaded: ${product}`);
+}
+
 function buildPrompt(data) {
   const intro = `You are an expert digital product strategist writing for ${data.platform}.`;
   const context = `I am creating a ${data.offerType} ${data.productType} for ${data.audience} in the ${data.topic} niche.`;
   const style = `Use a ${data.tone} tone. Keep the answer practical, specific, and structured.`;
+  const packContext = `The output should be useful for building prompt packs, digital offers, templates, and sellable assets.`;
 
   if (data.goal === "idea") {
     return `${intro}
 
 ${context}
+
+${packContext}
 
 Help me generate 10 strong digital product ideas.
 
@@ -61,6 +90,8 @@ ${style}`;
 
 ${context}
 
+${packContext}
+
 Validate this product direction.
 
 Requirements:
@@ -79,6 +110,8 @@ ${style}`;
 
 ${context}
 
+${packContext}
+
 Create a full product blueprint.
 
 Requirements:
@@ -88,6 +121,7 @@ Requirements:
 - Suggest bonus elements to make it feel premium
 - Suggest the best format for delivery
 - Suggest a simple workflow to build it fast
+- Make it suitable for a sellable prompt pack or digital product
 
 ${style}`;
   }
@@ -96,6 +130,8 @@ ${style}`;
     return `${intro}
 
 ${context}
+
+${packContext}
 
 Write sales and listing copy.
 
@@ -115,6 +151,8 @@ ${style}`;
 
 ${context}
 
+${packContext}
+
 Create a 7-day launch plan.
 
 Requirements:
@@ -133,6 +171,8 @@ ${style}`;
 
 ${context}
 
+${packContext}
+
 Help me create a pricing strategy.
 
 Requirements:
@@ -149,6 +189,8 @@ ${style}`;
     return `${intro}
 
 ${context}
+
+${packContext}
 
 Create bundle ideas for this product.
 
@@ -167,6 +209,8 @@ ${style}`;
 
 ${context}
 
+${packContext}
+
 Write a short email sequence for this product.
 
 Requirements:
@@ -184,6 +228,8 @@ ${style}`;
     return `${intro}
 
 ${context}
+
+${packContext}
 
 Create customer FAQ and objection-handling copy.
 
@@ -222,8 +268,11 @@ function clearFormFields() {
   goalInput.value = "idea";
   offerTypeInput.value = "starter";
   output.value = "";
+
+  presetButtons.forEach((btn) => btn.classList.remove("active"));
+
   autoResizeTextarea();
-  statusMessage.textContent = "Cleared";
+  setStatus("Cleared");
 }
 
 generateBtn.addEventListener("click", function () {
@@ -231,23 +280,23 @@ generateBtn.addEventListener("click", function () {
   const finalPrompt = buildPrompt(data);
   output.value = finalPrompt;
   autoResizeTextarea();
-  statusMessage.textContent = "Prompt generated";
+  setStatus("Prompt generated");
 });
 
 copyBtn.addEventListener("click", function () {
   const text = output.value.trim();
 
   if (!text) {
-    statusMessage.textContent = "Nothing to copy";
+    setStatus("Nothing to copy");
     return;
   }
 
   navigator.clipboard.writeText(text)
     .then(function () {
-      statusMessage.textContent = "Copied";
+      setStatus("Copied");
     })
     .catch(function () {
-      statusMessage.textContent = "Copy failed";
+      setStatus("Copy failed");
     });
 });
 
@@ -255,16 +304,22 @@ downloadBtn.addEventListener("click", function () {
   const text = output.value.trim();
 
   if (!text) {
-    statusMessage.textContent = "Nothing to download";
+    setStatus("Nothing to download");
     return;
   }
 
   downloadTextFile(text, "prompt-studio-output.txt");
-  statusMessage.textContent = "Downloaded";
+  setStatus("Downloaded");
 });
 
 clearBtn.addEventListener("click", function () {
   clearFormFields();
+});
+
+presetButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    applyPreset(button);
+  });
 });
 
 output.addEventListener("input", autoResizeTextarea);
