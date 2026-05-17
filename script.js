@@ -26,6 +26,11 @@ function getFormData() {
   };
 }
 
+function autoResizeTextarea() {
+  output.style.height = "auto";
+  output.style.height = output.scrollHeight + "px";
+}
+
 function buildPrompt(data) {
   const intro = `You are an expert digital product strategist writing for ${data.platform}.`;
   const context = `I am creating a ${data.offerType} ${data.productType} for ${data.audience} in the ${data.topic} niche.`;
@@ -261,5 +266,7 @@ downloadBtn.addEventListener("click", function () {
 clearBtn.addEventListener("click", function () {
   clearFormFields();
 });
+
 output.addEventListener("input", autoResizeTextarea);
+
 autoResizeTextarea();
