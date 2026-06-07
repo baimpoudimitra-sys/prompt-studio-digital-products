@@ -3,6 +3,7 @@ const productTypeInput = document.getElementById("productType");
 const audienceInput = document.getElementById("audience");
 const topicInput = document.getElementById("topic");
 const goalInput = document.getElementById("goal");
+const outputModeInput = document.getElementById("outputMode");
 const toneInput = document.getElementById("tone");
 const offerTypeInput = document.getElementById("offerType");
 
@@ -18,10 +19,11 @@ const presetButtons = document.querySelectorAll(".preset-btn");
 function getFormData() {
   return {
     platform: platformInput.value || "ChatGPT",
-    productType: productTypeInput.value.trim() || "Visual Prompt Pack",
-    audience: audienceInput.value.trim() || "digital product creators",
-    topic: topicInput.value.trim() || "visual AI design assets",
-    goal: goalInput.value || "idea",
+    productType: productTypeInput.value.trim() || "Digital Product Bundle",
+    audience: audienceInput.value.trim() || "Etsy sellers and digital product creators",
+    topic: topicInput.value.trim() || "AI-assisted digital products",
+    goal: goalInput.value || "blueprint",
+    outputMode: outputModeInput.value || "productpack",
     tone: toneInput.value.trim() || "clear, premium, commercial",
     offerType: offerTypeInput.value || "core"
   };
@@ -42,7 +44,7 @@ function applyPreset(button) {
   const topic = button.dataset.topic || "";
   const tone = button.dataset.tone || "";
   const offer = button.dataset.offer || "core";
-  const goal = button.dataset.goal || "idea";
+  const goal = button.dataset.goal || "blueprint";
 
   productTypeInput.value = product;
   audienceInput.value = audience;
@@ -57,268 +59,242 @@ function applyPreset(button) {
   setStatus(`Preset loaded: ${product}`);
 }
 
-function basePromptIntro(data) {
-  return `You are an expert AI digital product strategist, Etsy product developer, and prompt pack creator writing for ${data.platform}.
+function baseIntro(data) {
+  return `You are an expert digital product strategist, Etsy listing specialist, bundle planner, and AI-assisted product development assistant writing for ${data.platform}.
 
-I want to create a ${data.offerType} ${data.productType} for ${data.audience} in the niche of ${data.topic}.
-
-The product should be commercially useful, beginner-friendly, visually oriented, and suitable for sale as a digital product.
+I want to create a ${data.offerType} ${data.productType} for ${data.audience} in the area of ${data.topic}.
 
 Use a ${data.tone} tone.
 
-Return the answer in clearly labeled sections with strong structure, practical ideas, and no vague filler.`;
+Important:
+- Focus on finished digital products that can be sold online
+- Do not frame this as selling prompt bundles
+- Keep the response specific, commercial, and beginner-friendly
+- Make the output practical enough to turn into a real Etsy listing or product file set`;
 }
 
-function buildIdeaPrompt(data) {
-  return `${basePromptIntro(data)}
+function goalInstruction(goal) {
+  if (goal === "idea") return "Generate strong product concepts with clear commercial value.";
+  if (goal === "validation") return "Validate the product and identify strengths, risks, and improvements.";
+  if (goal === "blueprint") return "Build the full structure of the product from idea to deliverables.";
+  if (goal === "listing") return "Create listing-focused sales content and conversion assets.";
+  if (goal === "launch") return "Plan a simple launch strategy for this product.";
+  if (goal === "pricing") return "Suggest pricing, tiers, and value positioning.";
+  if (goal === "bundle") return "Create bundle logic, cross-sells, and upsells.";
+  if (goal === "email") return "Create a short promotional email sequence.";
+  if (goal === "faq") return "Write customer FAQ and objection-handling content.";
+  return "Create a commercially useful response.";
+}
 
-Create the response using these exact sections:
+function buildProductPackPrompt(data) {
+  return `${baseIntro(data)}
+
+${goalInstruction(data.goal)}
+
+Return the answer in these exact sections:
 
 1. Product Concept
-- Suggest 10 product ideas
-- Explain what each one helps the buyer create
+- Define the product clearly
+- Explain what the buyer receives
 
-2. Best Buyer Types
-- List the buyer types most likely to purchase this
+2. Product Contents
+- List the assets, pages, files, or pieces included
 
-3. Strongest Commercial Angles
-- Suggest 5 positioning angles that would help this sell
+3. Best Use Cases
+- Explain what the buyer can create or do with it
 
-4. Recommended Formats
-- Suggest the best formats for delivery such as PDF, guide, prompt pack, Notion file, worksheet, or bundle
+4. Product Structure
+- Suggest how to organize the product into sections, folders, or variations
 
-5. Starter Pricing
-- Suggest realistic starter price ranges for Etsy-style sales`;
+5. Bonus Add-Ons
+- Suggest 5 bonuses that increase value
+
+6. Premium Positioning
+- Explain how to make the offer feel more premium
+
+7. Best Next Step
+- Give the next action I should take to create this product`;
 }
 
-function buildValidationPrompt(data) {
-  return `${basePromptIntro(data)}
+function buildListingKitPrompt(data) {
+  return `${baseIntro(data)}
 
-Create the response using these exact sections:
+${goalInstruction(data.goal)}
 
-1. Product Potential
-- Evaluate whether this product has weak, medium, or strong sales potential
-
-2. Buyer Pain Points
-- Explain what buyer problem this solves
-
-3. Strengths
-- List the strongest reasons this could sell
-
-4. Weak Points
-- List the risks, weaknesses, or unclear areas
-
-5. Improvement Ideas
-- Suggest 5 ways to improve the offer
-
-6. Final Verdict
-- Give a short and honest final conclusion`;
-}
-
-function buildBlueprintPrompt(data) {
-  return `${basePromptIntro(data)}
-
-Create a full prompt-pack blueprint using these exact sections:
-
-1. Product Title Ideas
-- Suggest 10 product title ideas
-
-2. Core Promise
-- Explain the transformation or outcome for the buyer
-
-3. Pack Structure
-- Suggest 8 to 12 sections or modules inside the product
-
-4. Prompt Categories
-- Suggest specific prompt categories to include
-
-5. Bonus Ideas
-- Suggest at least 5 bonuses that increase value
-
-6. Beginner Guide
-- Explain what simple beginner instructions should be included
-
-7. Delivery Format
-- Recommend the best final format for selling this product
-
-8. Premium Positioning
-- Explain how to make the offer feel more premium`;
-}
-
-function buildListingPrompt(data) {
-  return `${basePromptIntro(data)}
-
-Create Etsy-ready listing support using these exact sections:
+Return the answer in these exact sections:
 
 1. Listing Title Ideas
-- Suggest 12 SEO-friendly title ideas
+- Suggest 12 Etsy-style title ideas
 
 2. Product Description
-- Write a compelling product description
+- Write a sales-friendly description
 
 3. Key Benefits
-- Write benefit-led bullet points
+- Write benefit-focused bullet points
 
 4. Search Keywords
-- Suggest relevant search keywords
+- Suggest strong search phrases
 
-5. First Image Hook
-- Write short hook text for the first listing image
+5. Image Hook Ideas
+- Suggest text hooks for listing images
 
-6. CTA
-- Write a short call to action
+6. Buyer Fit
+- Explain who this is best for
 
-7. Buyer Fit
-- Explain who this product is best for`;
+7. CTA
+- Write a short call to action`;
 }
 
-function buildLaunchPrompt(data) {
-  return `${basePromptIntro(data)}
+function buildBundleBuilderPrompt(data) {
+  return `${baseIntro(data)}
 
-Create a launch plan using these exact sections:
+${goalInstruction(data.goal)}
 
-1. Launch Goal
-- Define the launch objective
+Return the answer in these exact sections:
 
-2. 7-Day Plan
-- Break actions down day by day
+1. Core Product
+- Define the main product clearly
 
-3. Content Ideas
-- Suggest content ideas for Instagram, Pinterest, or TikTok
+2. Bundle Ideas
+- Suggest 7 bundle options
 
-4. Promo Angles
-- Suggest 5 promotional angles
+3. Bundle Contents
+- Explain what each bundle should include
 
-5. Bonus / Urgency
-- Suggest launch bonus or urgency ideas
+4. Cross-Sell Opportunities
+- Suggest related add-on products
 
-6. Upsell Option
-- Suggest one related upsell
+5. Upsell Idea
+- Suggest one premium upgrade
 
-7. Solo-Creator Advice
-- Keep the plan realistic for one creator`;
+6. Bundle Pricing Logic
+- Explain pricing structure
+
+7. Bundle Naming Ideas
+- Suggest strong bundle names`;
 }
 
-function buildPricingPrompt(data) {
-  return `${basePromptIntro(data)}
+function buildBuyerGuidePrompt(data) {
+  return `${baseIntro(data)}
 
-Create a pricing strategy using these exact sections:
+${goalInstruction(data.goal)}
 
-1. Pricing Tiers
-- Suggest starter, core, and premium tiers
+Return the answer in these exact sections:
 
-2. What Each Tier Includes
-- Explain what belongs in each offer
+1. Buyer Welcome Note
+- Write a short welcome message
 
-3. Suggested Price Range
-- Suggest realistic prices
+2. What Is Included
+- Explain exactly what files or assets the buyer gets
 
-4. Best Launch Version
-- Explain which tier should launch first
+3. How to Use It
+- Write simple beginner-friendly instructions
 
-5. Perceived Value Boosters
-- Suggest ways to increase value perception
+4. Best Results Tips
+- Explain how to get the most value from the product
 
-6. Bundle Offer
-- Suggest one bundle pricing option`;
+5. Important Notes
+- Add useful limitations or clarification points
+
+6. Support Style Wording
+- Write helpful guidance for common buyer confusion
+
+7. Reuse / Access Reminder
+- Include buyer-friendly wording about downloading and using files`;
 }
 
-function buildBundlePrompt(data) {
-  return `${basePromptIntro(data)}
+function buildAIDisclosurePrompt(data) {
+  return `${baseIntro(data)}
 
-Create bundle strategy output using these exact sections:
+${goalInstruction(data.goal)}
 
-1. Bundle Concepts
-- Suggest 7 bundle ideas
+Return the answer in these exact sections:
 
-2. What Each Bundle Includes
-- Explain contents clearly
+1. Short AI Disclosure
+- Write a short transparent disclosure line for a listing
 
-3. Buyer Match
-- Explain who each bundle is for
+2. Detailed AI Process Note
+- Explain how AI was used as part of the seller's process
 
-4. Bundle Names
-- Suggest strong bundle names
+3. Human Creative Role
+- Describe the seller's design, curation, editing, or finishing role
 
-5. Discount Logic
-- Suggest smart bundle discount positioning
+4. Safe Listing Wording
+- Write Etsy-friendly wording that focuses on the finished product
 
-6. Cross-Sell Idea
-- Suggest one cross-sell
+5. Product Description Insert
+- Write a short disclosure paragraph I can place inside the description
 
-7. Upsell Idea
-- Suggest one upsell`;
+6. FAQ Version
+- Write a simple buyer-facing answer if someone asks whether AI was used`;
 }
 
-function buildEmailPrompt(data) {
-  return `${basePromptIntro(data)}
+function buildFilePlanPrompt(data) {
+  return `${baseIntro(data)}
 
-Create a 5-email sequence using these exact sections:
+${goalInstruction(data.goal)}
 
-1. Email 1
-- Subject line
-- Goal
-- Main message
+Return the answer in these exact sections:
 
-2. Email 2
-- Subject line
-- Goal
-- Main message
+1. Final Deliverables
+- List the exact files the buyer should receive
 
-3. Email 3
-- Subject line
-- Goal
-- Main message
+2. File Naming Plan
+- Suggest clear file names for delivery
 
-4. Email 4
-- Subject line
-- Goal
-- Main message
+3. Folder Structure
+- Suggest how to organize the files
 
-5. Email 5
-- Subject line
-- Goal
-- Main message
+4. File Format Suggestions
+- Recommend the best file formats for this product
 
-6. Sequence Strategy
-- Explain the logic behind the sequence`;
+5. Etsy Upload Plan
+- Explain how to split or package files for Etsy delivery
+
+6. Size / Delivery Notes
+- Mention practical delivery considerations for digital files
+
+7. Buyer Clarity Notes
+- Suggest what to explain so the buyer understands what they receive`;
 }
 
-function buildFaqPrompt(data) {
-  return `${basePromptIntro(data)}
+function buildChecklistPrompt(data) {
+  return `${baseIntro(data)}
 
-Create FAQ content using these exact sections:
+${goalInstruction(data.goal)}
 
-1. Top Buyer Questions
-- List 12 common buyer questions
+Return the answer in these exact sections:
 
-2. Answers
-- Answer each one clearly
+1. Product Planning Checklist
+- List all planning steps
 
-3. Objection Handling
-- Address price, value, ease of use, and originality concerns
+2. Asset Creation Checklist
+- List all creation steps
 
-4. Confidence Builders
-- Suggest trust-building statements for the listing
+3. Packaging Checklist
+- List all file preparation steps
 
-5. Best Placement
-- Explain where this FAQ content should appear in the product page`;
+4. Listing Checklist
+- List all Etsy listing tasks
+
+5. Buyer Experience Checklist
+- List all buyer-facing clarity checks
+
+6. Quality Control Checklist
+- List final quality checks
+
+7. Batch Creation Advice
+- Explain how I can repeat this workflow for many products`;
 }
 
 function buildPrompt(data) {
-  if (data.goal === "idea") return buildIdeaPrompt(data);
-  if (data.goal === "validation") return buildValidationPrompt(data);
-  if (data.goal === "blueprint") return buildBlueprintPrompt(data);
-  if (data.goal === "listing") return buildListingPrompt(data);
-  if (data.goal === "launch") return buildLaunchPrompt(data);
-  if (data.goal === "pricing") return buildPricingPrompt(data);
-  if (data.goal === "bundle") return buildBundlePrompt(data);
-  if (data.goal === "email") return buildEmailPrompt(data);
-  if (data.goal === "faq") return buildFaqPrompt(data);
-
-  return `${basePromptIntro(data)}
-
-Create a structured response with practical, commercially useful sections.`;
+  if (data.outputMode === "listingkit") return buildListingKitPrompt(data);
+  if (data.outputMode === "bundlebuilder") return buildBundleBuilderPrompt(data);
+  if (data.outputMode === "buyerguide") return buildBuyerGuidePrompt(data);
+  if (data.outputMode === "aidisclosure") return buildAIDisclosurePrompt(data);
+  if (data.outputMode === "fileplan") return buildFilePlanPrompt(data);
+  if (data.outputMode === "checklist") return buildChecklistPrompt(data);
+  return buildProductPackPrompt(data);
 }
 
 function downloadTextFile(text, filename) {
@@ -335,12 +311,12 @@ function downloadTextFile(text, filename) {
 }
 
 function createFilename(data) {
-  const rawName = `${data.productType}-${data.goal}`
+  const rawName = `${data.productType}-${data.outputMode}-${data.goal}`
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-  return rawName ? `${rawName}.txt` : "prompt-output.txt";
+  return rawName ? `${rawName}.txt` : "digital-product-output.txt";
 }
 
 function clearFormFields() {
@@ -349,7 +325,8 @@ function clearFormFields() {
   topicInput.value = "";
   toneInput.value = "";
   platformInput.value = "ChatGPT";
-  goalInput.value = "idea";
+  goalInput.value = "blueprint";
+  outputModeInput.value = "productpack";
   offerTypeInput.value = "starter";
   output.value = "";
 
@@ -364,7 +341,7 @@ generateBtn.addEventListener("click", function () {
   const finalPrompt = buildPrompt(data);
   output.value = finalPrompt;
   autoResizeTextarea();
-  setStatus("Pack sections prompt generated");
+  setStatus(`Generated: ${data.outputMode}`);
 });
 
 copyBtn.addEventListener("click", function () {
