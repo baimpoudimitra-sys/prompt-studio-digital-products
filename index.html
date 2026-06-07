@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Product Studio for Etsy Creators</title>
-  <link rel="stylesheet" href="./style.css?v=8" />
+  <title>Batch Digital Product Studio for Etsy Creators</title>
+  <link rel="stylesheet" href="./style.css?v=9" />
 </head>
 <body>
   <div class="app">
     <header class="hero">
-      <p class="eyebrow">Etsy-Safe Digital Product Studio</p>
-      <h1>Digital Product Studio for Etsy Creators</h1>
+      <p class="eyebrow">Batch Product Creation System</p>
+      <h1>Batch Digital Product Studio for Etsy Creators</h1>
       <p class="subtitle">
-        Plan, package, and write sellable digital products faster — from clipart bundles and wall art sets
-        to mockups, digital paper, coloring pages, and seasonal collections.
+        Build multiple digital products faster with repeatable systems for product ideas, bundles,
+        listing kits, file delivery plans, buyer guides, and launch-ready collections.
       </p>
     </header>
 
     <main class="container">
       <section class="card presets-card">
-        <h2>Product categories</h2>
+        <h2>Product families</h2>
         <p class="section-text">
-          Choose a product type to auto-fill the form and generate product-building outputs for Etsy-ready digital offers.
+          Choose a product family to auto-fill the studio and generate a batch workflow for many related digital products.
         </p>
 
         <div class="preset-group">
@@ -60,9 +60,9 @@
       </section>
 
       <section class="card form-card">
-        <h2>Build your product</h2>
+        <h2>Batch creation studio</h2>
         <p class="section-text">
-          Use the fields below to generate product structure, listing copy, delivery planning, buyer notes, and packaging decisions.
+          Set one niche, one collection direction, and one workflow — then generate outputs for many related products at once.
         </p>
 
         <div class="form-grid">
@@ -76,7 +76,7 @@
           </div>
 
           <div class="field">
-            <label for="productType">Product type</label>
+            <label for="productType">Product family</label>
             <input id="productType" type="text" placeholder="e.g. Clipart Bundle" />
           </div>
 
@@ -86,8 +86,35 @@
           </div>
 
           <div class="field">
-            <label for="topic">Topic / use case</label>
+            <label for="topic">Topic / product use case</label>
             <input id="topic" type="text" placeholder="e.g. PNG clipart collections" />
+          </div>
+
+          <div class="field">
+            <label for="collectionName">Collection name</label>
+            <input id="collectionName" type="text" placeholder="e.g. Boho Summer Florals" />
+          </div>
+
+          <div class="field">
+            <label for="seasonTheme">Season / theme</label>
+            <input id="seasonTheme" type="text" placeholder="e.g. Summer, Christmas, Vintage, Neutral Nursery" />
+          </div>
+
+          <div class="field">
+            <label for="variationCount">Number of product variations</label>
+            <input id="variationCount" type="number" min="1" max="50" value="12" />
+          </div>
+
+          <div class="field">
+            <label for="targetFormat">Target format</label>
+            <select id="targetFormat">
+              <option value="PNG bundle">PNG bundle</option>
+              <option value="JPG printable set">JPG printable set</option>
+              <option value="PDF pack">PDF pack</option>
+              <option value="SVG bundle">SVG bundle</option>
+              <option value="Mixed digital bundle">Mixed digital bundle</option>
+              <option value="ZIP delivery pack">ZIP delivery pack</option>
+            </select>
           </div>
 
           <div class="field">
@@ -108,6 +135,7 @@
           <div class="field">
             <label for="outputMode">Output mode</label>
             <select id="outputMode">
+              <option value="batchplanner">Batch Planner</option>
               <option value="productpack">Product Pack</option>
               <option value="listingkit">Etsy Listing Kit</option>
               <option value="bundlebuilder">Bundle Builder</option>
@@ -135,7 +163,7 @@
         </div>
 
         <div class="actions">
-          <button id="generateBtn" type="button" class="btn btn-primary">Generate Output</button>
+          <button id="generateBtn" type="button" class="btn btn-primary">Generate Batch Output</button>
           <button id="copyBtn" type="button" class="btn btn-secondary">Copy</button>
           <button id="downloadBtn" type="button" class="btn btn-secondary">Download TXT</button>
           <button id="clearBtn" type="button" class="btn btn-secondary">Clear</button>
@@ -144,27 +172,27 @@
 
       <section class="card output-card">
         <div class="output-header">
-          <h2>Your output</h2>
+          <h2>Your batch output</h2>
           <span id="statusMessage" class="status">Ready</span>
         </div>
 
-        <textarea id="output" readonly placeholder="Your Etsy-safe digital product build output will appear here..."></textarea>
+        <textarea id="output" readonly placeholder="Your batch product planning output will appear here..."></textarea>
       </section>
 
       <section class="card tips-card">
-        <h2>How to use this</h2>
+        <h2>Best workflow</h2>
         <ul>
-          <li>Use Product Pack to build the structure of the digital product itself.</li>
-          <li>Use Etsy Listing Kit for titles, description, hooks, and SEO direction.</li>
-          <li>Use File Delivery Plan to organize the exact files the buyer should receive.</li>
-          <li>Use Buyer Guide for instructions, usage notes, and after-purchase clarity.</li>
-          <li>Use AI Disclosure to draft transparent wording about your creative process.</li>
-          <li>Use Production Checklist to move faster when creating many products in batches.</li>
+          <li>Pick one product family and one collection name per batch session.</li>
+          <li>Use Batch Planner first to map many related products quickly.</li>
+          <li>Use Product Pack next to shape the strongest product into a sellable offer.</li>
+          <li>Use Listing Kit and File Delivery Plan before publishing to Etsy.</li>
+          <li>Use Production Checklist when you want to repeat the same workflow across many collections.</li>
+          <li>Keep seasonal and evergreen collections separate so your shop stays organized.</li>
         </ul>
       </section>
     </main>
   </div>
 
-  <script src="./script.js?v=8"></script>
+  <script src="./script.js?v=9"></script>
 </body>
 </html>
